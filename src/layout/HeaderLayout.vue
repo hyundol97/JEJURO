@@ -1,60 +1,50 @@
 <template>
-  <div class="buttons">
-    <router-link to="/LoginPage">
-      <v-btn
-        class="ma-2"
-        color="success"
-      >
-      Log In
-      </v-btn>
-    </router-link>
-    <router-link to="/LoginPage">
-      <v-btn
-          class="ma-2"
-          color="success"
-          to="/SingInPage"
-        >
-        Join
-      </v-btn>
-    </router-link>
-    <router-link to="/LoginPage">
-      <v-btn
-          class="ma-2"
-          color="success"
-          to="/MyPage"
-        >
-        Help
-      </v-btn>
-    </router-link>
+  <div>
+    <div class="logo-left">
+      <router-link to="/">
+        <img :src="LoginLogo" width="75px" height="75px" />
+      </router-link>
+    </div>
+    <div class="buttons">
+      <v-btn class="ma-2" color="success" to="/LoginPage"> LOGIN </v-btn>
+      <v-btn class="ma-2" color="success" to="/SignInPage"> JOIN </v-btn>
+      <v-btn class="ma-2" color="success" to="/MyPage"> MY PAGE </v-btn>
+    </div>
   </div>
 </template>
 
 <script>
-
 export default {
-  name: 'HeaderLayout',
+  name: "HeaderLayout",
 
-  components: {
+  components: {},
+
+  data() {
+    return { LoginLogo: require("@/assets/no_logo_b.png") };
   },
 
-  data () {
-    return {
-    }
-  },
-
-  methods: {
-  }
-}
-
+  methods: {},
+};
 </script>
 
 <style>
-  .buttons {
-    position: fixed;
-    top: 10px;
-    right: 1vw;
-    z-index: 100;
-  }
-  a { text-decoration:none !important } 
-  a:hover { text-decoration:none !important }
+.buttons {
+  position: fixed;
+  top: 10px;
+  right: 1vw;
+  z-index: 100;
+}
+a {
+  text-decoration: none !important;
+}
+a:hover {
+  text-decoration: none !important;
+}
+
+.logo-left {
+  position: fixed;
+  top: 10px;
+  left: 1vw;
+  z-index: 100;
+}
 </style>

@@ -5,20 +5,23 @@
 </template>
 
 <script>
-import PageTitle from '../components/PageTitle.vue'
+import PageTitle from "../components/PageTitle.vue";
 
 export default {
-  name: 'PlayListPage',
+  name: "PlayListPage",
 
   components: {
-    PageTitle
+    PageTitle,
   },
 
-  data () {
+  data() {
     return {
-      pageName: document.URL.substring(document.URL.lastIndexOf('/') + 1, document.URL.length - 4),
-      pageExplain: 'About 페이지의 유형B 입니다.'
-    }
-  }
-}
+      pageName: document.URL.substring(
+        document.URL.lastIndexOf("/") + 1,
+        document.URL.length - 4
+      ),
+      pageExplain: "About 페이지의 유형B 입니다.",
+    };
+  },
+};
 </script>
