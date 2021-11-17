@@ -1,17 +1,35 @@
 <template>
   <div>
-    <page-title
-      :pageName="pageName"
-      :pageExplain="pageExplain"
-      v-show="pageName === 'aaa'"
-    ></page-title>
-    <div class="map" ref="map"></div>
+    <div class="search-filter">
+      <span class="filter-contents">
+        <i
+          class="fas fa-hashtag"
+          style="color: Tomato; margin-top: 4px; margin-right: 7px"
+        >
+        </i>
+        <p style="color: Black; margin-bottom: -16px">
+          어떤 여행을 떠날 건가요?
+        </p>
+        <i
+          class="fas fa-chevron-down"
+          style="color: Tomato; margin-top: 7px; margin-left: 15px"
+        ></i>
+      </span>
+    </div>
+    <div class="main-contents">
+      <page-title
+        :pageName="pageName"
+        :pageExplain="pageExplain"
+        v-show="pageName === 'aaa'"
+      ></page-title>
+      <div class="map" ref="map"></div>
+      <div class="data-box"></div>
+    </div>
   </div>
 </template>
 
 <script>
 import PageTitle from "../components/PageTitle.vue";
-
 export default {
   name: "PlayListPage",
 
@@ -26,6 +44,9 @@ export default {
         document.URL.length - 4
       ),
       pageExplain: "About 페이지의 유형B 입니다.",
+      items: ["foo", "bar", "fizz", "buzz"],
+      values: ["foo", "bar"],
+      value: null,
     };
   },
 
@@ -46,11 +67,38 @@ export default {
 </script>
 
 <style>
-.map {
-  position: absolute;
-  left: 30px;
-  top: 200px;
+.search-filter {
+  margin-top: 100px;
+  margin-left: 100px;
+  border-radius: 50px;
   width: 400px;
-  height: 400px;
+  padding: 10px;
+  text-align: center;
+  font-size: 20px;
+  border: 1px solid orange;
+}
+
+.filter-contents {
+  display: inline-flex;
+}
+
+.main-contents {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.map {
+  margin-top: 50px;
+  width: 1000px;
+  height: 600px;
+}
+
+.data-box {
+  margin-top: 50px;
+  width: 600px;
+  height: 600px;
+  margin-left: 100px;
+  background-color: blue;
 }
 </style>

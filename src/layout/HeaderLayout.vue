@@ -44,7 +44,7 @@ a:hover {
 .logo-left {
   position: fixed;
   top: 10px;
-  left: 1vw;
+  left: 100px;
   z-index: 100;
 }
 </style>
