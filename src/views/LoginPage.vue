@@ -3,7 +3,7 @@
     <div class="login-form">
       <img :src="LoginLogo" class="login-logo" />
       <v-text-field
-        label="ID"
+        label="Email"
         :rules="rules"
         hide-details="auto"
       ></v-text-field>
@@ -13,7 +13,7 @@
           <v-btn class="mb-1" width="360px" color="primary"> LOGIN </v-btn>
         </v-row>
         <v-row align="center" justify="space-around">
-          <v-btn width="360px" color="error" to="/SignInPage"> REGISTER </v-btn>
+          <v-btn width="360px" color="error" to="/SignUpPage"> REGISTER </v-btn>
         </v-row>
       </div>
     </div>
@@ -45,8 +45,8 @@ export default {
   background-color: #f89b00;
 }
 .login-logo {
-  width: 360px;
-  height: 360px;
+  width: 330px;
+  height: 330px;
   justify-content: center;
 }
 .login-btn {

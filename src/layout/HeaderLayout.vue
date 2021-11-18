@@ -7,7 +7,7 @@
     </div>
     <div class="buttons">
       <v-btn class="ma-2" color="success" to="/LoginPage"> LOGIN </v-btn>
-      <v-btn class="ma-2" color="success" to="/SignInPage"> JOIN </v-btn>
+      <v-btn class="ma-2" color="success" to="/SignUpPage"> JOIN </v-btn>
       <v-btn class="ma-2" color="success" to="/MyPage"> MY PAGE </v-btn>
     </div>
   </div>

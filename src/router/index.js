@@ -1,46 +1,51 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import Home from "../views/Home.vue";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: "/",
+    name: "Home",
+    component: Home,
   },
   {
-    path: '/MyPage',
-    name: 'MyPage',
-    component: () => import(/* webpackChunkName: "about" */ '../views/MyPage.vue')
+    path: "/MyPage",
+    name: "MyPage",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/MyPage.vue"),
   },
   {
-    path: '/LoginPage',
-    name: 'LoginPage',
-    component: () => import(/* webpackChunkName: "about" */ '../views/LoginPage.vue')
+    path: "/LoginPage",
+    name: "LoginPage",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/LoginPage.vue"),
   },
   {
-    path: '/SignInPage',
-    name: 'SignInPage',
-    component: () => import(/* webpackChunkName: "about" */ '../views/SignInPage.vue')
+    path: "/SignUpPage",
+    name: "SignUpPage",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/SignUpPage.vue"),
   },
   {
-    path: '/MakeListPage',
-    name: 'MakeListPage',
-    component: () => import(/* webpackChunkName: "about" */ '../views/MakeListPage.vue')
+    path: "/MakeListPage",
+    name: "MakeListPage",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/MakeListPage.vue"),
   },
   {
-    path: '/PlayListPage',
-    name: 'PlayListPage',
-    component: () => import(/* webpackChunkName: "about" */ '../views/PlayListPage.vue')
-  }
-]
+    path: "/PlayListPage",
+    name: "PlayListPage",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/PlayListPage.vue"),
+  },
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;
