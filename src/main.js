@@ -7,7 +7,7 @@ import vuetify from "./plugins/vuetify";
 Vue.config.productionTip = false;
 
 import firebase from "firebase/compat/app";
-import "firebase/auth";
+import "firebase/compat/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAFMn4JmEEWlJww3zjTZbDzQCaERWNQetM",

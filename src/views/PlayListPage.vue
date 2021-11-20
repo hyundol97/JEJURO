@@ -99,6 +99,6 @@ export default {
   width: 600px;
   height: 600px;
   margin-left: 100px;
-  background-color: blue;
+  background-color: darkgrey;
 }
 </style>
