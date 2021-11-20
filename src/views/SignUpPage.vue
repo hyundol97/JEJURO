@@ -9,7 +9,7 @@
         type="password"
         v-model="password"
       ></v-text-field>
-      <h3 style="margin-top: 20px">Select your age</h3>
+      <h3 style="margin-top: 20px">Select your age (Optional)</h3>
       <v-combobox
         v-model="select1"
         :items="ages"
@@ -18,7 +18,7 @@
         dense
         style="margin-top: 20px"
       ></v-combobox>
-      <h3 style="margin-top: 20px">Select your gender</h3>
+      <h3 style="margin-top: 20px">Select your gender (Optional)</h3>
       <v-combobox
         v-model="select2"
         :items="genders"
@@ -39,8 +39,9 @@
 </template>
 
 <script>
+/* eslint-disable no-unused-vars */
 import firebase from "firebase/compat/app";
-import "firebase/auth";
+
 export default {
   name: "SignUpPage",
 
@@ -68,17 +69,18 @@ export default {
   methods: {
     checkMembers() {
       console.log("클릭!");
+      console.log(this.email);
+      console.log(this.password);
       firebase
         .auth()
-        .signInWithEmailAndPassword(this.email, this.password)
-        .then(
-          function (user) {
-            alert("로그인 성공!");
-          },
-          function (err) {
-            alert("이메일 및 비밀번호를 확인하세요.");
-          }
-        );
+        .createUserWithEmailAndPassword(this.email, this.password)
+        .then((user) => {
+          alert("회원가입 성공!");
+          window.location.href = "http://localhost:8080/LoginPage";
+        })
+        .catch((err) => {
+          alert("중복된 이메일입니다. 다시 입력해주세요.");
+        });
     },
   },
 };
@@ -113,5 +115,9 @@ export default {
 
 .signUp-btn {
   margin-top: 40px;
+}
+
+h3 {
+  color: cornflowerblue;
 }
 </style>
