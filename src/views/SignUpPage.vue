@@ -1,31 +1,44 @@
 <template>
   <div class="signUp">
+    <home-header-layout />
     <div class="signUp-form">
-      <h3 style="margin-top: 20px">Input your email</h3>
-      <v-text-field label="Email" :rules="rules" v-model="email"></v-text-field>
-      <h3>Input your password</h3>
+      <h4>Input your email</h4>
+      <v-text-field
+        label="Email"
+        :rules="rules"
+        v-model="email"
+        style="margin-top: -5px"
+      ></v-text-field>
+      <h4>Input your password</h4>
       <v-text-field
         label="Password"
         type="password"
         v-model="password"
+        style="margin-top: -5px"
       ></v-text-field>
-      <h3 style="margin-top: 20px">Select your age (Optional)</h3>
+      <h4 style="margin-top: 15px">Input your Nickname</h4>
+      <v-text-field
+        label="Nickname"
+        v-model="nickName"
+        style="margin-top: -5px"
+      ></v-text-field>
+      <h4 style="margin-top: 15px">Select your age (Optional)</h4>
       <v-combobox
         v-model="select1"
         :items="ages"
         label="Age"
         outlined
         dense
-        style="margin-top: 20px"
+        style="margin-top: 15px"
       ></v-combobox>
-      <h3 style="margin-top: 20px">Select your gender (Optional)</h3>
+      <h4 style="margin-top: 15px">Select your gender (Optional)</h4>
       <v-combobox
         v-model="select2"
         :items="genders"
         label="Gender"
         outlined
         dense
-        style="margin-top: 20px"
+        style="margin-top: 15px"
       ></v-combobox>
       <div class="signUp-btn">
         <v-row align="center" justify="space-around">
@@ -41,11 +54,12 @@
 <script>
 /* eslint-disable no-unused-vars */
 import firebase from "firebase/compat/app";
+import HomeHeaderLayout from "../layout/HomeHeaderLayout.vue";
 
 export default {
   name: "SignUpPage",
 
-  components: {},
+  components: { HomeHeaderLayout },
 
   data() {
     return {
@@ -57,6 +71,7 @@ export default {
       LoginLogo: require("@/assets/no_logo_b.png"),
       email: "",
       password: "",
+      nickName: "",
       select1: [],
       select2: [],
       rules: [
@@ -68,9 +83,6 @@ export default {
 
   methods: {
     checkMembers() {
-      console.log("클릭!");
-      console.log(this.email);
-      console.log(this.password);
       firebase
         .auth()
         .createUserWithEmailAndPassword(this.email, this.password)
@@ -86,10 +98,10 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .signUp {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: #f89b00;
 }
 
@@ -114,10 +126,17 @@ export default {
 }
 
 .signUp-btn {
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
-h3 {
+h4 {
   color: cornflowerblue;
+}
+
+@media screen and (min-width: 1600px) {
+  .signUp-form {
+    position: relative;
+    top: 15vh;
+  }
 }
 </style>

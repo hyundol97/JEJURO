@@ -1,7 +1,8 @@
 <template>
   <div class="login">
+    <home-header-layout />
     <div class="login-form">
-      <img :src="LoginLogo" class="login-logo" />
+      <img :src="loginLogo" class="login-logo" />
       <v-text-field
         label="Email"
         :rules="rules"
@@ -21,10 +22,11 @@
 </template>
 
 <script>
+import HomeHeaderLayout from "../layout/HomeHeaderLayout.vue";
 export default {
   name: "LoginPage",
 
-  components: {},
+  components: { HomeHeaderLayout },
 
   data() {
     return {
@@ -32,20 +34,20 @@ export default {
         (value) => !!value || "Required.",
         (value) => (value && value.length >= 5) || "Min 5 characters",
       ],
-      LoginLogo: require("@/assets/no_logo_b.png"),
+      loginLogo: require("@/assets/no_logo_b.png"),
     };
   },
 };
 </script>
 
-<style>
+<style scoped>
 .login {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: #f89b00;
 }
 .login-logo {
-  width: 330px;
+  width: 360px;
   height: 330px;
   justify-content: center;
 }
@@ -63,5 +65,12 @@ export default {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 1px 2px 2px 1px gray;
+}
+
+@media screen and (min-width: 1600px) {
+  .login-form {
+    position: relative;
+    top: 15vh;
+  }
 }
 </style>

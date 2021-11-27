@@ -1,21 +1,21 @@
 <template>
-  <div class="header-layout">
+  <div class="homge-header-layout">
     <div class="logo-left">
       <router-link to="/">
         <img :src="loginLogo" width="90px" height="90px" />
       </router-link>
     </div>
     <div class="top-btn">
-      <a class="ma-3" href="/LoginPage"> LOGIN </a>
-      <a class="ma-3" href="/SignUpPage"> JOIN </a>
-      <a class="ma-3" href="/MyPage"> MY PAGE </a>
+      <v-btn class="ma-3" color="success" to="/LoginPage"> LOGIN </v-btn>
+      <v-btn class="ma-3" color="success" to="/SignUpPage"> JOIN </v-btn>
+      <v-btn class="ma-3" color="success" to="/MyPage"> MY PAGE </v-btn>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "HeaderLayout",
+  name: "HomeHeaderLayout",
 
   components: {},
 
@@ -23,27 +23,32 @@ export default {
     return { loginLogo: require("@/assets/sublogo_w.png") };
   },
 
-  methods: {},
+  methods: {
+    isHome() {
+      if (document.URL === "http://localhost:8000/") {
+        this.loginLogo = require("@/assets/fruit_main.png");
+      }
+    },
+  },
+  created() {
+    console.log(document.URL);
+    this.isHome();
+  },
 };
 </script>
 
 <style scoped>
 .header-layout {
-  background-color: #f89b00;
   width: 100%;
   height: 90px;
 }
 
 .top-btn {
   position: absolute;
-  right: 4vw;
+  right: 2vw;
   z-index: 100;
   line-height: 90px;
   font-size: 18px;
-}
-
-.v-application a {
-  color: #ffffff;
 }
 
 a {
@@ -56,7 +61,7 @@ a:hover {
 .logo-left {
   position: absolute;
   top: 0px;
-  left: 60px;
+  left: 3vw;
   z-index: 100;
 }
 </style>

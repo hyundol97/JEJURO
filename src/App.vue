@@ -1,6 +1,5 @@
 <template>
-  <v-app class="app">
-    <HeaderLayout class="buttons" />
+  <v-app>
     <v-main>
       <router-view />
     </v-main>
@@ -8,18 +7,17 @@
 </template>
 
 <script>
-import HeaderLayout from "./layout/HeaderLayout.vue";
 import Vue from "vue";
 import Buefy from "buefy";
 Vue.use(Buefy);
 
 export default {
-  components: { HeaderLayout },
+  components: {},
   name: "App",
 
-  data: () => ({
-    //
-  }),
+  data() {
+    return {};
+  },
 };
 </script>
 

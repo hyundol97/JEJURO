@@ -1,10 +1,18 @@
 <template>
-  <div>
+  <div class="play-list-page">
+    <div>
+      <header-layout />
+    </div>
     <div class="search-filter">
-      <span class="filter-contents">
+      <span class="filter-item">
         <i
           class="fas fa-hashtag"
-          style="color: Tomato; margin-top: 4px; margin-right: 7px"
+          style="
+            color: Tomato;
+            margin-top: 4px;
+            padding-right: 10px;
+            padding-left: 2px;
+          "
         >
         </i>
         <p style="color: Black; margin-bottom: -16px">
@@ -17,11 +25,6 @@
       </span>
     </div>
     <div class="main-contents">
-      <page-title
-        :pageName="pageName"
-        :pageExplain="pageExplain"
-        v-show="pageName === 'aaa'"
-      ></page-title>
       <div class="map" ref="map"></div>
       <div class="data-box"></div>
     </div>
@@ -29,12 +32,12 @@
 </template>
 
 <script>
-import PageTitle from "../components/PageTitle.vue";
+import HeaderLayout from "../layout/HeaderLayout.vue";
 export default {
   name: "PlayListPage",
 
   components: {
-    PageTitle,
+    HeaderLayout,
   },
 
   data() {
@@ -57,7 +60,7 @@ export default {
     var options = {
       //지도를 생성할 때 필요한 기본 옵션
       center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
-      level: 3, //지도의 레벨(확대, 축소 정도)
+      level: 10, //지도의 레벨(확대, 축소 정도)
     };
 
     const mapInstance = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
@@ -66,39 +69,56 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.play-list-page {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .search-filter {
-  margin-top: 100px;
-  margin-left: 100px;
+  margin-top: 30px;
+  margin-left: 75px;
+  width: 100%;
+}
+
+.filter-item {
+  display: inline-flex;
   border-radius: 50px;
-  width: 400px;
+  width: 320px;
   padding: 10px;
   text-align: center;
   font-size: 20px;
   border: 1px solid orange;
 }
 
-.filter-contents {
-  display: inline-flex;
-}
-
 .main-contents {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin-top: 30px;
+  display: inline-flex;
+  margin-left: 75px;
 }
 
 .map {
-  margin-top: 50px;
-  width: 1000px;
-  height: 600px;
+  width: 800px;
+  height: 500px;
 }
 
 .data-box {
-  margin-top: 50px;
-  width: 600px;
-  height: 600px;
+  width: 480px;
+  height: 500px;
   margin-left: 100px;
   background-color: darkgrey;
+}
+
+@media screen and (min-width: 1600px) {
+  .map {
+    width: 1050px;
+    height: 700px;
+  }
+  .data-box {
+    width: 600px;
+    height: 700px;
+    margin-left: 100px;
+  }
 }
 </style>
