@@ -4,7 +4,7 @@
       <header-layout />
     </div>
     <div class="search-filter">
-      <span class="filter-item">
+      <span class="filter-item" @click="isClick = true">
         <i
           class="fas fa-hashtag"
           style="
@@ -28,16 +28,20 @@
       <div class="map" ref="map"></div>
       <div class="data-box"></div>
     </div>
+    <page-modal v-if="isClick" style="z-index: 1000"></page-modal>
   </div>
 </template>
 
 <script>
+/* eslint-disable no-unused-vars */
 import HeaderLayout from "../layout/HeaderLayout.vue";
+import PageModal from "../components/PageModal.vue";
 export default {
   name: "PlayListPage",
 
   components: {
     HeaderLayout,
+    PageModal,
   },
 
   data() {
@@ -50,8 +54,11 @@ export default {
       items: ["foo", "bar", "fizz", "buzz"],
       values: ["foo", "bar"],
       value: null,
+      isClick: false,
     };
   },
+
+  methods: {},
 
   mounted() {
     let kakao = window.kakao;
@@ -90,6 +97,7 @@ export default {
   text-align: center;
   font-size: 20px;
   border: 1px solid orange;
+  cursor: pointer;
 }
 
 .main-contents {
