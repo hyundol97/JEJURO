@@ -82,8 +82,8 @@ export default {
   },
 
   methods: {
-    checkMembers() {
-      firebase
+    async checkMembers() {
+      await firebase
         .auth()
         .createUserWithEmailAndPassword(this.email, this.password)
         .then((user) => {
@@ -91,7 +91,7 @@ export default {
           window.location.href = "http://localhost:8080/LoginPage";
         })
         .catch((err) => {
-          alert("중복된 이메일입니다. 다시 입력해주세요.");
+          alert("실패! 이메일 혹은 비밀번호를 다시 입력해주세요.");
         });
     },
   },

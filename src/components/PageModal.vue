@@ -121,6 +121,6 @@ export default {
 
 #ok-btn {
   margin-top: 50px;
-  margin-left: 350px;
+  margin-left: 450px;
 }
 </style>

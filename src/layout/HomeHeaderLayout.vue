@@ -6,14 +6,38 @@
       </router-link>
     </div>
     <div class="top-btn">
-      <v-btn class="ma-3" color="success" to="/LoginPage"> LOGIN </v-btn>
-      <v-btn class="ma-3" color="success" to="/SignUpPage"> JOIN </v-btn>
+      <v-btn
+        class="ma-3"
+        color="success"
+        to="/LoginPage"
+        v-if="!$store.state.fireUser"
+      >
+        LOGIN
+      </v-btn>
+      <v-btn
+        class="ma-3"
+        color="success"
+        to="/SignUpPage"
+        v-if="!$store.state.fireUser"
+      >
+        JOIN
+      </v-btn>
+      <v-btn
+        class="ma-3"
+        color="success"
+        v-if="$store.state.fireUser"
+        @click="signOut()"
+      >
+        LOGOUT
+      </v-btn>
       <v-btn class="ma-3" color="success" to="/MyPage"> MY PAGE </v-btn>
     </div>
   </div>
 </template>
 
 <script>
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
 export default {
   name: "HomeHeaderLayout",
 
@@ -28,6 +52,9 @@ export default {
       if (document.URL === "http://localhost:8000/") {
         this.loginLogo = require("@/assets/fruit_main.png");
       }
+    },
+    async signOut() {
+      await firebase.auth().signOut();
     },
   },
   created() {

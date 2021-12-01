@@ -1,24 +1,18 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from "vue";
+import Vuex from "vuex";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    drawer: false
+    fireUser: null,
   },
-  getters: {
-    drawer (state) {
-      return state.drawer
-    }
-  },
+  getters: {},
   mutations: {
-    setDrawer (state) {
-      state.drawer = !state.drawer
-    }
+    setFireUser(state, fu) {
+      state.fireUser = fu;
+    },
   },
-  actions: {
-  },
-  modules: {
-  }
-})
+  actions: {},
+  modules: {},
+});

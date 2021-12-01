@@ -6,14 +6,23 @@
       </router-link>
     </div>
     <div class="top-btn">
-      <a class="ma-3" href="/LoginPage"> LOGIN </a>
-      <a class="ma-3" href="/SignUpPage"> JOIN </a>
+      <a class="ma-3" href="/LoginPage" v-if="!$store.state.fireUser">
+        LOGIN
+      </a>
+      <a class="ma-3" href="/SignUpPage" v-if="!$store.state.fireUser">
+        JOIN
+      </a>
+      <a class="ma-3" v-if="$store.state.fireUser" @click="signOut()">
+        LOGOUT
+      </a>
       <a class="ma-3" href="/MyPage"> MY PAGE </a>
     </div>
   </div>
 </template>
 
 <script>
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
 export default {
   name: "HeaderLayout",
 
@@ -23,7 +32,11 @@ export default {
     return { loginLogo: require("@/assets/sublogo_w.png") };
   },
 
-  methods: {},
+  methods: {
+    async signOut() {
+      await firebase.auth().signOut();
+    },
+  },
 };
 </script>
 

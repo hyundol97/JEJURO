@@ -7,11 +7,23 @@
         label="Email"
         :rules="rules"
         hide-details="auto"
+        v-model="email"
       ></v-text-field>
-      <v-text-field label="Password" type="password"></v-text-field>
+      <v-text-field
+        label="Password"
+        type="password"
+        v-model="password"
+      ></v-text-field>
       <div class="login-btn">
         <v-row align="center" justify="space-around">
-          <v-btn class="mb-1" width="360px" color="primary"> LOGIN </v-btn>
+          <v-btn
+            class="mb-1"
+            width="360px"
+            color="primary"
+            @click="checkLogin()"
+          >
+            LOGIN
+          </v-btn>
         </v-row>
         <v-row align="center" justify="space-around">
           <v-btn width="360px" color="error" to="/SignUpPage"> REGISTER </v-btn>
@@ -22,7 +34,9 @@
 </template>
 
 <script>
+/* eslint-disable no-unused-vars */
 import HomeHeaderLayout from "../layout/HomeHeaderLayout.vue";
+import firebase from "firebase/compat/app";
 export default {
   name: "LoginPage",
 
@@ -35,7 +49,25 @@ export default {
         (value) => (value && value.length >= 5) || "Min 5 characters",
       ],
       loginLogo: require("@/assets/no_logo_b.png"),
+      email: "",
+      password: "",
     };
+  },
+
+  methods: {
+    async checkLogin() {
+      await firebase
+        .auth()
+        .signInWithEmailAndPassword(this.email, this.password)
+        .then((user) => {
+          alert("로그인 성공!");
+          window.location.href = "http://localhost:8080/";
+          this.$store.commit("setFireUser", user.user);
+        })
+        .catch((err) => {
+          alert("실패! 이메일 혹은 비밀번호를 다시 입력해주세요.");
+        });
+    },
   },
 };
 </script>
