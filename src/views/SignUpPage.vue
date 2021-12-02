@@ -54,6 +54,9 @@
 <script>
 /* eslint-disable no-unused-vars */
 import firebase from "firebase/compat/app";
+import { getFirestore } from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore";
+const db = getFirestore();
 import HomeHeaderLayout from "../layout/HomeHeaderLayout.vue";
 
 export default {
@@ -72,8 +75,8 @@ export default {
       email: "",
       password: "",
       nickName: "",
-      select1: [],
-      select2: [],
+      select1: "",
+      select2: "",
       rules: [
         (value) => !!value || "Required.",
         (value) => (value && value.length >= 5) || "Min 5 characters",
@@ -87,13 +90,22 @@ export default {
         .auth()
         .createUserWithEmailAndPassword(this.email, this.password)
         .then((user) => {
+          const docRef = addDoc(collection(db, "userInfo"), {
+            email: this.email,
+            password: this.password,
+            name: this.nickName,
+            age: this.select1,
+            gemder: this.select2,
+          });
+          console.log("Document written with ID: ", docRef.email);
           alert("회원가입 성공!");
-          window.location.href = "http://localhost:8080/LoginPage";
+          window.location.href = "http://localhost:8080/";
         })
         .catch((err) => {
           alert("실패! 이메일 혹은 비밀번호를 다시 입력해주세요.");
         });
     },
+    async setMemberInfo() {},
   },
 };
 </script>

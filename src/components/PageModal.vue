@@ -19,39 +19,13 @@
           </h3>
         </div>
         <div style="display: flex">
-          <span>당일치기</span>
-          <span>1박 2일</span>
-          <span>2박 3일</span>
-          <span>3박 4일</span>
-          <span>4박 5일</span>
-          <span>5박 6일</span>
-          <span>그 이상</span>
+          <span v-for="(item, idx) in periodItem" :key="idx">{{ item }}</span>
         </div>
       </div>
       <div style="margin-top: 50px">
         <h3>원하는 분위기를 마음껏 선택해 보세요!</h3>
         <div style="margin-top: 10px; line-height: 40px">
-          <span>#힐링</span>
-          <span>#조용한</span>
-          <span>#쉴틈없는</span>
-          <span>#계획적인</span>
-          <span>#액티비티</span>
-          <span>#올레길정복</span>
-          <span>#뚜벅이</span>
-          <span>#자연친화적</span>
-          <span>#동에번쩍서에번쩍</span>
-          <span>#맛집위주</span>
-          <span>#서핑</span>
-          <span>#게스트하우스</span>
-          <span>#무계획이계획</span>
-          <span>#시끌벅적</span>
-          <span>#한라산</span>
-          <span>#일출</span>
-          <span>#감성카페</span>
-          <span>#나만알고싶은</span>
-          <span>#독특한</span>
-          <span>#핫플</span>
-          <span>#해변</span>
+          <span v-for="(item, idx) in selectItem" :key="idx">{{ item }}</span>
         </div>
       </div>
       <div id="ok-btn">
@@ -69,6 +43,38 @@ export default {
   name: "PageModal",
   data() {
     return {
+      periodItem: [
+        "당일치기",
+        "1박 2일",
+        "2박 3일",
+        "3박 4일",
+        "4박 5일",
+        "5박 6일",
+        "그 이상",
+      ],
+      selectItem: [
+        "#힐링",
+        "#조용한",
+        "#쉴틈없는",
+        "#계획적인",
+        "#액티비티",
+        "#올레길정복",
+        "#뚜벅이",
+        "#자연친화적",
+        "#동에번쩍서에번쩍",
+        "#맛집위주",
+        "#서핑",
+        "#게스트하우스",
+        "#무계획이계획",
+        "#시끌벅적",
+        "#한라산",
+        "#일출",
+        "#감성카페",
+        "#나만알고싶은",
+        "#독특한",
+        "#핫플",
+        "#해변",
+      ],
       count: 3,
     };
   },
