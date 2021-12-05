@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app class="app">
     <v-main>
       <router-view />
     </v-main>
@@ -22,10 +22,9 @@ export default {
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
+
 .app {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  height: 200px;
+  font-family: "Noto Sans KR", sans-serif;
 }
 </style>

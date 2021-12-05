@@ -1,36 +1,21 @@
 <template>
-  <div class="homge-header-layout">
+  <div class="home-header-layout">
     <div class="logo-left">
       <router-link to="/">
         <img :src="loginLogo" width="90px" height="90px" />
       </router-link>
     </div>
     <div class="top-btn">
-      <v-btn
-        class="ma-3"
-        color="success"
-        to="/LoginPage"
-        v-if="!$store.state.fireUser"
-      >
+      <a class="ma-3" href="/LoginPage" v-if="!$store.state.fireUser">
         LOGIN
-      </v-btn>
-      <v-btn
-        class="ma-3"
-        color="success"
-        to="/SignUpPage"
-        v-if="!$store.state.fireUser"
-      >
+      </a>
+      <a class="ma-3" href="/SignUpPage" v-if="!$store.state.fireUser">
         JOIN
-      </v-btn>
-      <v-btn
-        class="ma-3"
-        color="success"
-        v-if="$store.state.fireUser"
-        @click="signOut()"
-      >
+      </a>
+      <a class="ma-3" v-if="$store.state.fireUser" @click="signOut()">
         LOGOUT
-      </v-btn>
-      <v-btn class="ma-3" color="success" to="/MyPage"> MY PAGE </v-btn>
+      </a>
+      <a class="ma-3" href="/MyPage"> MY PAGE </a>
     </div>
   </div>
 </template>
@@ -44,7 +29,7 @@ export default {
   components: {},
 
   data() {
-    return { loginLogo: require("@/assets/sublogo_w.png") };
+    return { loginLogo: require("@/assets/sublogo_oo.png") };
   },
 
   methods: {
@@ -65,9 +50,11 @@ export default {
 </script>
 
 <style scoped>
-.header-layout {
+.home-header-layout {
   width: 100%;
   height: 90px;
+  background-color: white;
+  color: #ff9b09;
 }
 
 .top-btn {
@@ -80,9 +67,20 @@ export default {
 
 a {
   text-decoration: none !important;
+  color: #ff9b09;
 }
 a:hover {
   text-decoration: none !important;
+  color: #ff9b09;
+}
+a:link {
+  color: #ff9b09;
+}
+a:visited {
+  color: #ff9b09;
+}
+a:active {
+  color: #ff9b09;
 }
 
 .logo-left {

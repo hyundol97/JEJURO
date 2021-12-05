@@ -96,7 +96,7 @@ export default {
   padding: 10px;
   text-align: center;
   font-size: 20px;
-  border: 1px solid orange;
+  border: 1px solid #ff9b09;
   cursor: pointer;
 }
 

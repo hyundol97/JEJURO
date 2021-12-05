@@ -11,19 +11,21 @@
       </div>
       <div style="margin-top: 50px">
         <div>
-          <h3 style="display: flex">
+          <h2 style="display: flex; font-family: 'gmarket-medium'">
             며칠의 일정인가요?
-            <p style="font-size: 10px; padding-left: 15px; padding-top: 5px">
+            <p style="font-size: 12px; padding-left: 15px; padding-top: 10px">
               TIP! 중복 체크도 괜찮아요!
             </p>
-          </h3>
+          </h2>
         </div>
         <div style="display: flex">
           <span v-for="(item, idx) in periodItem" :key="idx">{{ item }}</span>
         </div>
       </div>
       <div style="margin-top: 50px">
-        <h3>원하는 분위기를 마음껏 선택해 보세요!</h3>
+        <h2 style="font-family: 'gmarket-medium'">
+          원하는 분위기를 마음껏 선택해 보세요!
+        </h2>
         <div style="margin-top: 10px; line-height: 40px">
           <span v-for="(item, idx) in selectItem" :key="idx">{{ item }}</span>
         </div>
@@ -82,6 +84,10 @@ export default {
 </script>
 
 <style scoped>
+@font-face {
+  font-family: "gmarket-medium";
+  src: url("../assets/GmarketSansMedium.otf") format("truetype");
+}
 .page-modal,
 .overlay {
   width: 100%;
@@ -112,7 +118,7 @@ export default {
 }
 
 .modal-item span {
-  border: 1.5px solid orange;
+  border: 1.5px solid #ff9b09;
   border-radius: 25px;
   padding-top: 3px;
   padding-bottom: 3px;
