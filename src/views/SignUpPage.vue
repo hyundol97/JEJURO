@@ -53,11 +53,12 @@
 
 <script>
 /* eslint-disable no-unused-vars */
-import firebase from "firebase/compat/app";
-import { getFirestore } from "firebase/firestore";
-import { addDoc, collection } from "firebase/firestore";
-const db = getFirestore();
 import HomeHeaderLayout from "../layout/HomeHeaderLayout.vue";
+import firebase from "firebase/compat/app";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+const db = getFirestore();
+const auth = getAuth();
 
 export default {
   name: "SignUpPage",
@@ -86,18 +87,9 @@ export default {
 
   methods: {
     async checkMembers() {
-      await firebase
-        .auth()
-        .createUserWithEmailAndPassword(this.email, this.password)
+      await firebase.auth();
+      createUserWithEmailAndPassword(auth, this.email, this.password)
         .then((user) => {
-          const docRef = addDoc(collection(db, "userInfo"), {
-            email: this.email,
-            password: this.password,
-            name: this.nickName,
-            age: this.select1,
-            gemder: this.select2,
-          });
-          console.log("Document written with ID: ", docRef.email);
           alert("회원가입 성공!");
           window.location.href = "http://localhost:8080/";
         })
@@ -105,7 +97,20 @@ export default {
           alert("실패! 이메일 혹은 비밀번호를 다시 입력해주세요.");
         });
     },
-    async setMemberInfo() {},
+    async setMembers() {
+      try {
+        const docRef = await addDoc(collection(db, "userInfo"), {
+          first: "Alan",
+          middle: "Mathison",
+          last: "Turing",
+          born: 1912,
+        });
+
+        console.log("Document written with ID: ", docRef.id);
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
+    },
   },
 };
 </script>

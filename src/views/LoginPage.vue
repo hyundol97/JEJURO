@@ -37,6 +37,8 @@
 /* eslint-disable no-unused-vars */
 import HomeHeaderLayout from "../layout/HomeHeaderLayout.vue";
 import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+
 export default {
   name: "LoginPage",
 

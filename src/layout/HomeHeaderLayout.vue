@@ -21,8 +21,10 @@
 </template>
 
 <script>
+/* eslint-disable no-unused-vars */
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
+
 export default {
   name: "HomeHeaderLayout",
 
