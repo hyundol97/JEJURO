@@ -1,28 +1,20 @@
 <template>
   <div>
     <header-layout />
-    <v-card-text>
-      <v-autocomplete
-        v-model="model"
-        :items="items"
-        :loading="isLoading"
-        color="white"
-        item-text="Description"
-        item-value="API"
-        label="Public APIs"
-        placeholder="Start typing to Search"
-        prepend-icon="mdi-database-search"
-        return-object
-      ></v-autocomplete>
-    </v-card-text>
-    <v-divider></v-divider>
-    <v-card-actions>
-      <v-spacer></v-spacer>
-      <v-btn :disabled="!model" color="grey darken-3" @click="model = null">
-        Clear
-        <v-icon right> mdi-close-circle </v-icon>
-      </v-btn>
-    </v-card-actions>
+    <div class="list-explain">
+      <h3>찾으시는 여행지가 있나요?</h3>
+      <h3>무엇이든 검색해 보세요!</h3>
+    </div>
+    <div class="search-box">
+      <div class="search-item">
+        <img :src="searchImg" class="search-banner-img" />
+        <input
+          class="search-banner-input"
+          v-model="searchName"
+          placeholder="검색어를 입력하세요!"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -37,60 +29,51 @@ export default {
     HeaderLayout,
   },
 
-  data: () => ({
-    descriptionLimit: 60,
-    entries: [],
-    isLoading: false,
-    model: null,
-    search: null,
-  }),
-
-  computed: {
-    fields() {
-      if (!this.model) return [];
-
-      return Object.keys(this.model).map((key) => {
-        return {
-          key,
-          value: this.model[key] || "n/a",
-        };
-      });
-    },
-    items() {
-      return this.entries.map((entry) => {
-        const Description =
-          entry.Description.length > this.descriptionLimit
-            ? entry.Description.slice(0, this.descriptionLimit) + "..."
-            : entry.Description;
-
-        return Object.assign({}, entry, { Description });
-      });
-    },
-  },
-
-  watch: {
-    search(val) {
-      // Items have already been loaded
-      if (this.items.length > 0) return;
-
-      // Items have already been requested
-      if (this.isLoading) return;
-
-      this.isLoading = true;
-
-      // Lazily load input items
-      fetch("https://api.publicapis.org/entries")
-        .then((res) => res.json())
-        .then((res) => {
-          const { count, entries } = res;
-          this.count = count;
-          this.entries = entries;
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-        .finally(() => (this.isLoading = false));
-    },
+  data() {
+    return { searchImg: require("@/assets/fruit_logo.png"), searchName: "" };
   },
 };
 </script>
+
+<style scoped>
+.list-explain {
+  position: absolute;
+  top: 230px;
+  left: 35vw;
+  text-align: center;
+  width: 400px;
+  line-height: 1.7;
+}
+
+.search-box {
+  position: absolute;
+  top: 300px;
+  left: 35vw;
+}
+
+.search-item {
+  width: 400px;
+  height: 50px;
+  border: 2.5px solid #ff9b09;
+  border-radius: 25px;
+  margin: 15px;
+  display: flex;
+}
+
+.search-banner-img {
+  padding: 5px;
+  vertical-align: middle;
+  box-sizing: inherit;
+}
+
+.search-banner-input {
+  padding: 10px;
+  vertical-align: middle;
+  box-sizing: inherit;
+  border: 0 solid black;
+}
+
+input:focus {
+  outline: none;
+}
+</style>

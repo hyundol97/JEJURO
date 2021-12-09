@@ -5,7 +5,6 @@
       <h4>Input your email</h4>
       <v-text-field
         label="Email"
-        :rules="rules"
         v-model="email"
         style="margin-top: -5px"
       ></v-text-field>
@@ -14,6 +13,7 @@
         label="Password"
         type="password"
         v-model="password"
+        :rules="rules"
         style="margin-top: -5px"
       ></v-text-field>
       <h4 style="margin-top: 15px">Input your Nickname</h4>
@@ -55,10 +55,20 @@
 /* eslint-disable no-unused-vars */
 import HomeHeaderLayout from "../layout/HomeHeaderLayout.vue";
 import firebase from "firebase/compat/app";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import "firebase/compat/auth";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
+const firebaseConfig = {
+  apiKey: "AIzaSyAFMn4JmEEWlJww3zjTZbDzQCaERWNQetM",
+  authDomain: "jejuro-aed58.firebaseapp.com",
+  projectId: "jejuro-aed58",
+  storageBucket: "jejuro-aed58.appspot.com",
+  messagingSenderId: "269754792235",
+  appId: "1:269754792235:web:5444c22c35289dd0e02d6e",
+  measurementId: "G-7133M5G4MP",
+};
+
+firebase.initializeApp(firebaseConfig);
 const db = getFirestore();
-const auth = getAuth();
 
 export default {
   name: "SignUpPage",
@@ -80,30 +90,36 @@ export default {
       select2: "",
       rules: [
         (value) => !!value || "Required.",
-        (value) => (value && value.length >= 5) || "Min 5 characters",
+        (value) => (value && value.length >= 6) || "Min 6 characters",
       ],
     };
   },
 
   methods: {
     async checkMembers() {
-      await firebase.auth();
-      createUserWithEmailAndPassword(auth, this.email, this.password)
+      await firebase
+        .auth()
+        .createUserWithEmailAndPassword(this.email, this.password)
         .then((user) => {
           alert("회원가입 성공!");
-          window.location.href = "http://localhost:8080/";
+          this.setMembers();
+          setTimeout(() => {
+            window.location.href = "http://localhost:8080/";
+          }, 500);
         })
         .catch((err) => {
           alert("실패! 이메일 혹은 비밀번호를 다시 입력해주세요.");
         });
     },
     async setMembers() {
+      console.log("in setMembers!!!");
       try {
         const docRef = await addDoc(collection(db, "userInfo"), {
-          first: "Alan",
-          middle: "Mathison",
-          last: "Turing",
-          born: 1912,
+          email: this.email,
+          password: this.password,
+          name: this.nickName,
+          age: this.select1,
+          gender: this.select2,
         });
 
         console.log("Document written with ID: ", docRef.id);

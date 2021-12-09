@@ -41,11 +41,11 @@ export default {
       }
     },
     async signOut() {
+      console.log(this.$store.state.fireUser._delegate.email + " LogOut!");
       await firebase.auth().signOut();
     },
   },
   created() {
-    console.log(document.URL);
     this.isHome();
   },
 };

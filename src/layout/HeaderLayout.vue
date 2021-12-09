@@ -36,6 +36,7 @@ export default {
 
   methods: {
     async signOut() {
+      console.log(this.$store.state.fireUser._delegate.email + " LogOut!");
       await firebase.auth().signOut();
     },
   },
