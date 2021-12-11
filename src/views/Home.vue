@@ -5,7 +5,9 @@
       <router-link to="/PlayListPage">
         <div class="left-banner">
           <div class="left-text">
-            <h1>꼭맞는<img :src="homeLeftItem" id="home-ll" /></h1>
+            <h1 class="icon-text-wrapper">
+              꼭맞는<img :src="homeLeftItem" id="home-ll" />
+            </h1>
             <h1>플레이리스트</h1>
             <h1>재생하기</h1>
           </div>
@@ -13,25 +15,28 @@
         </div>
       </router-link>
       <div class="center-banner">
-        <img :src="mainLogo" id="img-size" />
         <hr
           style="
             width: 5px;
-            height: 75vh;
+            height: 90%;
+            margin-top: 10%;
             position: absolute;
-            top: 10vh;
-            left: 10vw;
+            left: 50%;
+            transform: translateX(-50%);
             z-index: -1;
             background-color: white;
             opacity: 0.3;
             border: none;
           "
         />
+        <img :src="mainLogo" id="img-size" />
       </div>
       <router-link to="/MakeListPage">
         <div class="right-banner">
           <div class="right-text">
-            <h1><img :src="homeRightItem" id="home-rr" />나만의</h1>
+            <h1 class="icon-text-wrapper">
+              <img :src="homeRightItem" id="home-rr" />나만의
+            </h1>
             <h1>재생목록</h1>
             <h1>만들기</h1>
           </div>
@@ -63,9 +68,12 @@ export default {
 
 <style scoped>
 .home {
+  position: relative;
   display: flex;
   justify-content: center;
   font-size: 24px;
+  line-height: 1.8;
+  overflow: hidden;
 }
 
 .left-banner {
@@ -75,29 +83,35 @@ export default {
   padding: 5px;
 }
 
+.icon-text-wrapper {
+  display: flex;
+  align-items: center;
+}
+
 .left-text {
   text-align: left;
   position: absolute;
   color: white;
-  top: 20vh;
+  top: 20%;
   left: 100px;
 }
 
 .center-banner {
   width: 320px;
-  height: 320px;
+  height: 100%;
   position: absolute;
-  border-radius: 1000px;
   z-index: 100;
 }
 
 #img-size {
-  width: 100%;
-  height: 100%;
+  width: 320px;
+  height: 320px;
   object-fit: cover;
   position: absolute;
-  top: 20vh;
+  top: 50%;
+  transform: translateY(-50%);
   border-radius: 1000px;
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.1);
 }
 
 #home-ll {
@@ -116,16 +130,16 @@ export default {
   width: 500px;
   height: 500px;
   position: absolute;
-  bottom: 10vh;
-  left: 5vw;
+  bottom: -100px;
+  left: 30px;
 }
 
 #home-r {
   width: 500px;
   height: 500px;
   position: absolute;
-  bottom: 10vh;
-  right: 5vw;
+  bottom: -100px;
+  right: -100px;
 }
 
 .right-banner {
@@ -138,40 +152,19 @@ export default {
 .right-text {
   text-align: right;
   position: absolute;
-  top: 20vh;
+  top: 20%;
   right: 100px;
   color: white;
 }
 
-@media screen and (max-width: 600px) {
-  .center-banner {
+@media screen and (max-width: 424px) {
+  #img-size {
     width: 200px;
     height: 200px;
   }
   .left-text,
   .right-text {
     font-size: 10px;
-  }
-}
-
-@media screen and (max-width: 720px) {
-  .center-banner {
-    width: 200px;
-    height: 200px;
-  }
-  .left-text,
-  .right-text {
-    font-size: 12px;
-  }
-}
-@media screen and (min-width: 1600px) {
-  .center-banner {
-    width: 400px;
-    height: 400px;
-  }
-  .left-text,
-  .right-text {
-    font-size: 28px;
   }
 }
 </style>

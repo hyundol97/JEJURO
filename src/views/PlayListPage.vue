@@ -86,7 +86,6 @@ export default {
 .search-filter {
   margin-top: 30px;
   margin-left: 75px;
-  width: 100%;
 }
 
 .filter-item {
@@ -108,12 +107,12 @@ export default {
 
 .map {
   width: 800px;
-  height: 500px;
+  height: 400px;
 }
 
 .data-box {
   width: 480px;
-  height: 500px;
+  height: 400px;
   margin-left: 100px;
   background-color: darkgrey;
 }
@@ -121,11 +120,11 @@ export default {
 @media screen and (min-width: 1600px) {
   .map {
     width: 1050px;
-    height: 700px;
+    height: 500px;
   }
   .data-box {
     width: 600px;
-    height: 700px;
+    height: 500px;
     margin-left: 100px;
   }
 }
