@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="backG">
     <header-layout />
     <div class="list-explain">
       <h3>찾으시는 여행지가 있나요?</h3>
@@ -30,7 +30,10 @@ export default {
   },
 
   data() {
-    return { searchImg: require("@/assets/fruit_logo.png"), searchName: "" };
+    return {
+      searchImg: require("@/assets/fruit_logo.png"),
+      searchName: "",
+    };
   },
 };
 </script>
@@ -39,7 +42,7 @@ export default {
 .list-explain {
   position: absolute;
   top: 230px;
-  left: 35vw;
+  left: 40.5vw;
   text-align: center;
   width: 400px;
   line-height: 1.7;
@@ -48,7 +51,7 @@ export default {
 .search-box {
   position: absolute;
   top: 300px;
-  left: 35vw;
+  left: 40vw;
 }
 
 .search-item {

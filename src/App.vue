@@ -27,10 +27,16 @@ export default {
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
-body {
-  overflow-x: auto;
-}
+
 .app {
   font-family: "Noto Sans KR", sans-serif;
+}
+
+main,
+.v-main,
+.theme--light.v-application {
+  background-color: none;
+  background-image: url(./assets/back_img.png);
+  background-size: 100% 100%;
 }
 </style>

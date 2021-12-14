@@ -4,7 +4,7 @@
       <header-layout />
     </div>
     <div class="search-filter">
-      <span class="filter-item" @click="isClick = true">
+      <span class="filter-item" @click="isClick = !isClick">
         <i
           class="fas fa-hashtag"
           style="
@@ -62,11 +62,10 @@ export default {
 
   mounted() {
     let kakao = window.kakao;
-    console.log(this.$refs.map);
     var container = this.$refs.map; //지도를 담을 영역의 DOM 레퍼런스
     var options = {
       //지도를 생성할 때 필요한 기본 옵션
-      center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+      center: new kakao.maps.LatLng(33.36701, 126.570667), //지도의 중심좌표.
       level: 10, //지도의 레벨(확대, 축소 정도)
     };
 
@@ -107,7 +106,7 @@ export default {
 
 .map {
   width: 800px;
-  height: 400px;
+  height: 500px;
 }
 
 .data-box {
@@ -119,13 +118,25 @@ export default {
 
 @media screen and (min-width: 1600px) {
   .map {
-    width: 1050px;
-    height: 500px;
+    width: 850px;
+    height: 550px;
+  }
+  .data-box {
+    width: 500px;
+    height: 550px;
+    margin-left: 150px;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .map {
+    width: 1150px;
+    height: 750px;
   }
   .data-box {
     width: 600px;
-    height: 500px;
-    margin-left: 100px;
+    height: 750px;
+    margin-left: 150px;
   }
 }
 </style>

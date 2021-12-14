@@ -58,9 +58,9 @@ export default {
     return {
       mainLogo: require("@/assets/logo_nb_w.png"),
       homeLeftItem: require("@/assets/home_ll.png"),
-      homeLeftImg: require("@/assets/home_l.png"),
+      homeLeftImg: require("@/assets/fix_home_l.png"),
       homeRightItem: require("@/assets/home_rr.png"),
-      homeRightImg: require("@/assets/home_r.png"),
+      homeRightImg: require("@/assets/fix_home_r.png"),
     };
   },
 };
@@ -71,7 +71,7 @@ export default {
   position: relative;
   display: flex;
   justify-content: center;
-  font-size: 24px;
+  font-size: 22px;
   line-height: 1.8;
   overflow: hidden;
 }
@@ -93,19 +93,19 @@ export default {
   position: absolute;
   color: white;
   top: 20%;
-  left: 100px;
+  left: 150px;
 }
 
 .center-banner {
-  width: 320px;
+  width: 360px;
   height: 100%;
   position: absolute;
   z-index: 100;
 }
 
 #img-size {
-  width: 320px;
-  height: 320px;
+  width: 360px;
+  height: 360px;
   object-fit: cover;
   position: absolute;
   top: 50%;
@@ -115,30 +115,30 @@ export default {
 }
 
 #home-ll {
-  width: 50px;
-  height: 50px;
+  width: 90px;
+  height: 90px;
   margin-left: 20px;
 }
 
 #home-rr {
-  width: 50px;
-  height: 50px;
+  width: 90px;
+  height: 90px;
   margin-right: 20px;
 }
 
 #home-l {
   width: 500px;
-  height: 500px;
+  height: 300px;
   position: absolute;
-  bottom: -100px;
-  left: 30px;
+  bottom: 0px;
+  left: 0px;
 }
 
 #home-r {
   width: 500px;
-  height: 500px;
+  height: 300px;
   position: absolute;
-  bottom: -100px;
+  bottom: 0px;
   right: -100px;
 }
 
@@ -153,18 +153,95 @@ export default {
   text-align: right;
   position: absolute;
   top: 20%;
-  right: 100px;
+  right: 150px;
   color: white;
 }
 
 @media screen and (max-width: 424px) {
   #img-size {
-    width: 200px;
-    height: 200px;
+    width: 120px;
+    height: 120px;
   }
   .left-text,
   .right-text {
     font-size: 10px;
+  }
+  .left-text {
+    left: 10px;
+  }
+  .right-text {
+    right: 10px;
+  }
+  .center-banner {
+    width: 120px;
+  }
+  #home-l,
+  #home-r {
+    width: 120px;
+    height: 50px;
+  }
+  #home-r {
+    right: 0px;
+  }
+  #home-ll,
+  #home-rr {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media screen and (min-width: 424px) and (max-width: 1200px) {
+  #img-size {
+    width: 300px;
+    height: 300px;
+  }
+  .left-text,
+  .right-text {
+    font-size: 18px;
+  }
+  .left-text {
+    left: 50px;
+  }
+  .right-text {
+    right: 50px;
+  }
+  .center-banner {
+    width: 300px;
+  }
+  #home-l,
+  #home-r {
+    width: 400px;
+    height: 250px;
+  }
+  #home-r {
+    right: 0px;
+  }
+  #home-ll,
+  #home-rr {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  #img-size {
+    width: 450px;
+    height: 450px;
+  }
+  .left-text,
+  .right-text {
+    font-size: 30px;
+  }
+  .center-banner {
+    width: 450px;
+  }
+  #home-l,
+  #home-r {
+    width: 900px;
+    height: 400px;
+  }
+  #home-r {
+    right: -150px;
   }
 }
 </style>

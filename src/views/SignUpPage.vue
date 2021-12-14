@@ -104,7 +104,7 @@ export default {
           alert("회원가입 성공!");
           this.setMembers();
           setTimeout(() => {
-            window.location.href = "http://localhost:8080/";
+            window.location.href = "https://jejuro-aed58.web.app/";
           }, 500);
         })
         .catch((err) => {
@@ -133,14 +133,14 @@ export default {
 
 <style scoped>
 .signUp {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-color: #f89b00;
 }
 
 .signUp-form {
   position: relative;
-  top: 10vh;
+  top: 5vh;
   display: block;
   width: 400px;
   height: 600px;
@@ -169,7 +169,7 @@ h4 {
 @media screen and (min-width: 1600px) {
   .signUp-form {
     position: relative;
-    top: 15vh;
+    top: 10vh;
   }
 }
 </style>

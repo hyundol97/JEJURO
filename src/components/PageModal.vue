@@ -1,16 +1,17 @@
 <template>
-  <div class="page-modal">
+  <div v-if="!isClick" class="page-modal">
     <div class="overlay" />
     <div class="modal-item">
       <div class="close-btn">
         <i
           class="far fa-times-circle fa-2x"
-          style="color: Tomato"
-          @click="closeModal()"
+          style="color: Tomato; cursor: pointer"
+          @click="isClick = !isClick"
         ></i>
       </div>
       <div style="margin-top: 50px">
         <div>
+          <span style="color: #2f9647; width: 10px; height: 10px" />
           <h2 style="display: flex; font-family: 'gmarket-medium'">
             며칠의 일정인가요?
             <p style="font-size: 12px; padding-left: 15px; padding-top: 10px">
@@ -19,7 +20,12 @@
           </h2>
         </div>
         <div style="display: flex">
-          <span v-for="(item, idx) in periodItem" :key="idx">{{ item }}</span>
+          <span
+            v-for="(item, idx) in periodItem"
+            :key="idx"
+            class="modal-items"
+            >{{ item }}</span
+          >
         </div>
       </div>
       <div style="margin-top: 50px">
@@ -27,7 +33,12 @@
           원하는 분위기를 마음껏 선택해 보세요!
         </h2>
         <div style="margin-top: 10px; line-height: 40px">
-          <span v-for="(item, idx) in selectItem" :key="idx">{{ item }}</span>
+          <span
+            v-for="(item, idx) in selectItem"
+            :key="idx"
+            class="modal-items"
+            >{{ item }}</span
+          >
         </div>
       </div>
       <div id="ok-btn">
@@ -77,7 +88,8 @@ export default {
         "#핫플",
         "#해변",
       ],
-      count: 3,
+      count: 23,
+      isClick: false,
     };
   },
 };
@@ -117,7 +129,7 @@ export default {
   border-radius: 25px;
 }
 
-.modal-item span {
+.modal-items {
   border: 1.5px solid #ff9b09;
   border-radius: 25px;
   padding-top: 3px;
@@ -133,6 +145,6 @@ export default {
 
 #ok-btn {
   margin-top: 50px;
-  margin-left: 450px;
+  margin-left: 40%;
 }
 </style>

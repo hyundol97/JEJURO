@@ -90,7 +90,7 @@ export default {
 }
 .login-form {
   position: relative;
-  top: 10vh;
+  top: 5vh;
   display: block;
   width: 400px;
   height: 600px;
@@ -104,7 +104,7 @@ export default {
 @media screen and (min-width: 1600px) {
   .login-form {
     position: relative;
-    top: 15vh;
+    top: 10vh;
   }
 }
 </style>

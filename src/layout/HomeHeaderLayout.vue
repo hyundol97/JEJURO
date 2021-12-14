@@ -2,20 +2,20 @@
   <div class="home-header-layout">
     <div class="logo-left">
       <router-link to="/">
-        <img :src="loginLogo" width="90px" height="90px" />
+        <img :src="loginLogo" width="180px" height="90px" />
       </router-link>
     </div>
     <div class="top-btn">
-      <a class="ma-3" href="/LoginPage" v-if="!$store.state.fireUser">
+      <router-link class="ma-3" to="/LoginPage" v-if="!$store.state.fireUser">
         LOGIN
-      </a>
-      <a class="ma-3" href="/SignUpPage" v-if="!$store.state.fireUser">
+      </router-link>
+      <router-link class="ma-3" to="/SignUpPage" v-if="!$store.state.fireUser">
         JOIN
-      </a>
-      <a class="ma-3" v-if="$store.state.fireUser" @click="signOut()">
+      </router-link>
+      <router-link class="ma-3" v-if="$store.state.fireUser" @click="signOut()">
         LOGOUT
-      </a>
-      <a class="ma-3" href="/MyPage"> MY PAGE </a>
+      </router-link>
+      <router-link class="ma-3" to="/MyPage"> MY PAGE </router-link>
     </div>
   </div>
 </template>
@@ -31,7 +31,7 @@ export default {
   components: {},
 
   data() {
-    return { loginLogo: require("@/assets/sublogo_oo.png") };
+    return { loginLogo: require("@/assets/fix_sub_o.png") };
   },
 
   methods: {
@@ -52,37 +52,45 @@ export default {
 </script>
 
 <style scoped>
+@font-face {
+  font-family: "nurom-bold";
+  src: url("../assets/Nurom-Bold.ttf") format("truetype");
+}
 .home-header-layout {
   width: 100%;
   height: 90px;
   background-color: white;
   color: #ff9b09;
+  font-family: "nurom-bold";
 }
 
 .top-btn {
   position: absolute;
-  right: 2vw;
+  right: 3vw;
   z-index: 100;
   line-height: 90px;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 a {
   text-decoration: none !important;
-  color: #ff9b09;
+  color: #ff9b09 !important;
 }
 a:hover {
   text-decoration: none !important;
-  color: #ff9b09;
+  color: #ff9b09 !important;
 }
 a:link {
-  color: #ff9b09;
+  text-decoration: none !important;
+  color: #ff9b09 !important;
 }
 a:visited {
-  color: #ff9b09;
+  text-decoration: none !important;
+  color: #ff9b09 !important;
 }
 a:active {
-  color: #ff9b09;
+  text-decoration: none !important;
+  color: #ff9b09 !important;
 }
 
 .logo-left {

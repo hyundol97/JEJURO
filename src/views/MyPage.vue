@@ -1,6 +1,7 @@
 <template>
   <div class="my-page">
     <home-header-layout />
+    <div>현재 회원 이메일 => {{ this.$store.state.fireUser.email }}</div>
   </div>
 </template>
 
