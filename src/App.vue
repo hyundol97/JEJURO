@@ -20,7 +20,9 @@ export default {
   },
 
   created() {
-    console.log(this.$store.state.fireUser);
+    setTimeout(() => {
+      console.log(this.$store.state.fireUser);
+    }, 500);
   },
 };
 </script>

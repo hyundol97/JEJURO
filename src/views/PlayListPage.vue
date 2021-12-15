@@ -8,7 +8,7 @@
         <i
           class="fas fa-hashtag"
           style="
-            color: Tomato;
+            color: #f89b00;
             margin-top: 4px;
             padding-right: 10px;
             padding-left: 2px;
@@ -20,7 +20,7 @@
         </p>
         <i
           class="fas fa-chevron-down"
-          style="color: Tomato; margin-top: 7px; margin-left: 15px"
+          style="color: #f89b00; margin-top: 7px; margin-left: 15px"
         ></i>
       </span>
     </div>

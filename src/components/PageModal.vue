@@ -5,7 +5,7 @@
       <div class="close-btn">
         <i
           class="far fa-times-circle fa-2x"
-          style="color: Tomato; cursor: pointer"
+          style="color: #f89b00; cursor: pointer"
           @click="isClick = !isClick"
         ></i>
       </div>
