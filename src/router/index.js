@@ -40,6 +40,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/PlayListPage.vue"),
   },
+  {
+    path: "/CategoryPage",
+    name: "CategoryPage",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/CategoryPage.vue"),
+  },
 ];
 
 const router = new VueRouter({

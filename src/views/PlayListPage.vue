@@ -52,6 +52,11 @@
       v-if="this.$store.state.isClick"
       style="z-index: 1000"
     ></page-modal>
+    <div>
+      <v-snackbar v-if="isSave" :timeout="timeout">
+        {{ text }}
+      </v-snackbar>
+    </div>
   </div>
 </template>
 
@@ -112,6 +117,9 @@ export default {
         },
       ],
       isShow: false,
+      isSave: false,
+      text: "My timeout is set to 2000.",
+      timeout: 2000,
     };
   },
 
@@ -120,6 +128,8 @@ export default {
       this.isShow = true;
     },
     goToList() {
+      alert("내 리스트에 저장되었습니다!");
+      this.isSave = true;
       this.isShow = false;
     },
     showModal() {

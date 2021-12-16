@@ -1,7 +1,8 @@
 <template>
   <div class="my-page">
     <home-header-layout />
-    <div>현재 회원 이메일 => {{ this.$store.state.fireUser.email }}</div>
+    <!-- <div>현재 회원 이메일 => {{ this.$store.state.fireUser.email }}</div> -->
+    <div class="comming-soon">Comming Soon!</div>
   </div>
 </template>
 
@@ -22,6 +23,19 @@ export default {
 .my-page {
   width: 100%;
   height: 100%;
-  background-color: #f89b00;
+}
+
+.comming-soon {
+  width: 800px;
+  height: 120px;
+  background-color: #2f9647;
+  color: #ffffff;
+  font-size: 80px;
+  vertical-align: middle;
+  text-align: center;
+  border-radius: 25px;
+  position: absolute;
+  top: 45vh;
+  left: 28vw;
 }
 </style>

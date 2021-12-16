@@ -14,10 +14,12 @@
           v-model="searchName"
           placeholder="검색어를 입력하세요!"
         />
-        <i
-          class="fas fa-search fa-2x"
-          style="padding-top: 5px; color: #f89b00"
-        ></i>
+        <router-link to="/CategoryPage">
+          <i
+            class="fas fa-search fa-2x"
+            style="padding-top: 5px; color: #f89b00"
+          ></i>
+        </router-link>
       </div>
     </div>
 
@@ -106,7 +108,7 @@ export default {
 <style scoped>
 .list-explain {
   position: absolute;
-  top: 230px;
+  top: 180px;
   left: 41vw;
   text-align: center;
   width: 400px;
@@ -115,7 +117,7 @@ export default {
 
 .search-box {
   position: absolute;
-  top: 300px;
+  top: 250px;
   left: 42vw;
 }
 
@@ -144,7 +146,7 @@ i {
 
 .ad-container {
   position: relative;
-  top: 350px;
+  top: 300px;
   left: 29vw;
 }
 
