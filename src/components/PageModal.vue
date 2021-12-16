@@ -88,7 +88,7 @@ export default {
         "#핫플",
         "#해변",
       ],
-      count: 23,
+      count: 7,
       isClose: false,
     };
   },
