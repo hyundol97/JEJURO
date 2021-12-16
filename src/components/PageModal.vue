@@ -1,12 +1,12 @@
 <template>
-  <div v-if="!isClick" class="page-modal">
+  <div v-if="!isClose" class="page-modal">
     <div class="overlay" />
     <div class="modal-item">
       <div class="close-btn">
         <i
           class="far fa-times-circle fa-2x"
           style="color: #f89b00; cursor: pointer"
-          @click="isClick = !isClick"
+          @click="closeModal()"
         ></i>
       </div>
       <div style="margin-top: 50px">
@@ -89,8 +89,14 @@ export default {
         "#해변",
       ],
       count: 23,
-      isClick: false,
+      isClose: false,
     };
+  },
+  methods: {
+    closeModal() {
+      this.isClose = !this.isClose;
+      this.$store.state.isClick = false;
+    },
   },
 };
 </script>

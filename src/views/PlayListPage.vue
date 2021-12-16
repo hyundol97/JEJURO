@@ -4,7 +4,7 @@
       <header-layout />
     </div>
     <div class="search-filter">
-      <span class="filter-item" @click="isClick = !isClick">
+      <span class="filter-item" @click="showModal()">
         <i
           class="fas fa-hashtag"
           style="
@@ -28,7 +28,7 @@
       <div class="map" ref="map"></div>
       <div class="data-box">
         <div class="table-box">
-          <span v-for="(item, idx) in lists" :key="idx">
+          <span v-for="(item, idx) in lists" :key="idx" @click="showBtn()">
             <p>{{ item.name }}</p>
             <p style="font-size: 0.7em; margin-bottom: -5px">
               {{ item.calories }}
@@ -37,18 +37,34 @@
         </div>
       </div>
     </div>
-    <page-modal v-if="isClick" style="z-index: 1000"></page-modal>
+    <div class="btn-box">
+      <v-btn
+        v-if="isShow"
+        color="black"
+        class="ma-2 white--text"
+        @click="goToList()"
+        width="500px"
+        style="border-radius: 30px"
+        >이 리스트가 맘에 들어요!</v-btn
+      >
+    </div>
+    <page-modal
+      v-if="this.$store.state.isClick"
+      style="z-index: 1000"
+    ></page-modal>
   </div>
 </template>
 
 <script>
 /* eslint-disable no-unused-vars */
 import HeaderLayout from "../layout/HeaderLayout.vue";
+import PageModal from "../components/PageModal.vue";
 export default {
   name: "PlayListPage",
 
   components: {
     HeaderLayout,
+    PageModal,
   },
 
   data() {
@@ -95,10 +111,21 @@ export default {
           calories: "카페24",
         },
       ],
+      isShow: false,
     };
   },
 
-  methods: {},
+  methods: {
+    showBtn() {
+      this.isShow = true;
+    },
+    goToList() {
+      this.isShow = false;
+    },
+    showModal() {
+      this.$store.commit("setIsClick", true);
+    },
+  },
 
   mounted() {
     let kakao = window.kakao;
@@ -161,7 +188,7 @@ export default {
   font-size: 24px;
   background-color: white;
   display: grid;
-  height: 550px;
+  height: 500px;
   overflow-y: auto;
   border: 2px solid black;
   border-radius: 15px;
@@ -172,14 +199,25 @@ export default {
   border-bottom: 1px solid black;
 }
 
+.table-box span:hover {
+  box-shadow: inset 0 0 0 100px rgba(216, 213, 213, 0.6);
+  cursor: pointer;
+}
+
+.btn-box {
+  position: relative;
+  top: 20px;
+  left: 1070px;
+}
+
 @media screen and (min-width: 1600px) {
   .map {
     width: 850px;
-    height: 550px;
+    height: 500px;
   }
   .data-box {
     width: 500px;
-    height: 550px;
+    height: 500px;
     margin-left: 150px;
   }
 }
