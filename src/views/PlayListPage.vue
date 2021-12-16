@@ -26,7 +26,16 @@
     </div>
     <div class="main-contents">
       <div class="map" ref="map"></div>
-      <div class="data-box"></div>
+      <div class="data-box">
+        <div class="table-box">
+          <span v-for="(item, idx) in lists" :key="idx">
+            <p>{{ item.name }}</p>
+            <p style="font-size: 0.7em; margin-bottom: -5px">
+              {{ item.calories }}
+            </p>
+          </span>
+        </div>
+      </div>
     </div>
     <page-modal v-if="isClick" style="z-index: 1000"></page-modal>
   </div>
@@ -35,26 +44,57 @@
 <script>
 /* eslint-disable no-unused-vars */
 import HeaderLayout from "../layout/HeaderLayout.vue";
-import PageModal from "../components/PageModal.vue";
 export default {
   name: "PlayListPage",
 
   components: {
     HeaderLayout,
-    PageModal,
   },
 
   data() {
     return {
-      pageName: document.URL.substring(
-        document.URL.lastIndexOf("/") + 1,
-        document.URL.length - 4
-      ),
-      pageExplain: "About 페이지의 유형B 입니다.",
       items: ["foo", "bar", "fizz", "buzz"],
       values: ["foo", "bar"],
       value: null,
       isClick: false,
+      headers: [
+        {
+          text: "Dessert (100g serving)",
+          align: "start",
+          value: "name",
+        },
+        { text: "Calories", value: "calories" },
+      ],
+      lists: [
+        {
+          name: "[Playlist] 뚜벅이지만 보고싶은게 너무 많은 걸(제주도대중교통정복코스)",
+          calories: "트러블메이커",
+        },
+        {
+          name: "[Playlist] 현생에 지친 삶을 위로 받고 싶어_여유로운힐링여행코스",
+          calories: "여행에미쳤다",
+        },
+        {
+          name: "[Playlist] 저는 제주도에 먹방 찍으러 왔는데요? (밥배디저트배따로인거알지)",
+          calories: "관광객1",
+        },
+        {
+          name: "[Playlist] 식물을 좋아하는 엄마 모시고 제주 여행",
+          calories: "제주도러버",
+        },
+        {
+          name: "[Playlist] 낮은 건물 사이로 보이는 제주도의 예쁜 하늘 #드라이브맛집",
+          calories: "붕붕이",
+        },
+        {
+          name: "[Playlist] 아무 생각 안하고 싶을 때 떠나는 제주",
+          calories: "무념무상",
+        },
+        {
+          name: "[Playlist] SNS에 자주 올라오는 거긴 어디야? (제주도유명카페투어)",
+          calories: "카페24",
+        },
+      ],
     };
   },
 
@@ -107,13 +147,29 @@ export default {
 .map {
   width: 800px;
   height: 500px;
+  border: 2px solid black;
 }
 
 .data-box {
   width: 480px;
   height: 400px;
   margin-left: 100px;
-  background-color: darkgrey;
+}
+
+.table-box {
+  line-height: 1.5;
+  font-size: 24px;
+  background-color: white;
+  display: grid;
+  height: 550px;
+  overflow-y: auto;
+  border: 2px solid black;
+  border-radius: 15px;
+}
+
+.table-box span {
+  padding: 20px;
+  border-bottom: 1px solid black;
 }
 
 @media screen and (min-width: 1600px) {

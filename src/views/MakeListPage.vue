@@ -107,7 +107,7 @@ export default {
 .list-explain {
   position: absolute;
   top: 230px;
-  left: 40vw;
+  left: 41vw;
   text-align: center;
   width: 400px;
   line-height: 1.7;
@@ -120,7 +120,7 @@ export default {
 }
 
 .search-item {
-  width: 300px;
+  width: 330px;
   height: 50px;
   border: 2.5px solid #ff9b09;
   border-radius: 25px;
